@@ -1,4 +1,4 @@
-package com.raju.threads;
+package com.raju.java.threads;
 
 class EvenThread implements Runnable {
 

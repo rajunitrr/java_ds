@@ -1,4 +1,4 @@
-package com.thread;
+package com.raju.java.threads;
 
 import java.util.concurrent.BlockingQueue;
 
