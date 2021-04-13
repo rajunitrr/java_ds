@@ -122,7 +122,7 @@ public class BinaryTreeUtil {
 
 		while (!queue.isEmpty()) {
 			BinaryTree temp = queue.poll();
-			System.out.println(temp.getData());
+			System.out.print(temp.getData()+" ");
 
 			if (temp.getLeft() != null) {
 				queue.add(temp.left);
@@ -383,5 +383,71 @@ public class BinaryTreeUtil {
 		System.out.println();
 
 	}
+
+	public static void levelWithRecursion(BinaryTree root) {
+
+		if(root==null) {
+			return ;
+		}
+		
+		System.out.println("\n Level order with recursion");
+		int h=height(root);
+		
+		for(int i=0;i<=h;i++) {
+			printDataGivenLevel(root, i+1);
+		}
+		
+	}
+	
+	//with recursion
+	public static void reverseLevelOrder(BinaryTree root) {
+		
+		if(root==null) {
+			return;
+		}
+		System.out.println("reverseLevelOrder");
+		int h=height(root);
+		
+		for(int i=h;i>=0;i--) {
+			printDataGivenLevel(root, i+1);
+		}
+		
+	}
+	
+	public static void reverseLevelOrderwWithOutRecursion(BinaryTree root) {
+		
+		if(root==null) {
+			return;
+		}
+		
+		System.out.println("reverseLevelOrderwWithOutRecursion");
+		Queue<BinaryTree> queue=new LinkedList<>();
+		queue.add(root);
+		Stack<Integer> stack=new Stack<>();
+		
+		while(!queue.isEmpty()) {
+			
+			BinaryTree temp=queue.remove();
+			
+			stack.add(temp.getData());
+			
+			if(temp.right!=null) {
+				queue.add(temp.right);
+			}
+			if(temp.left!=null) {
+				queue.add(temp.left);
+			}
+			
+			
+		}
+		
+		while(!stack.isEmpty()){
+			System.out.print(stack.pop()+" ");
+		}
+		
+	}
+	
+	
+	
 
 }

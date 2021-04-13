@@ -16,11 +16,12 @@ public class BinaryTreeImpl {
 		tree.root.right.left = new BinaryTree(6, null, null);
 		tree.root.right.right = new BinaryTree(7, null, null);
 
-		/*
-		 * System.out.println("Height of tree is : " +BinaryTreeUtil.height(tree.root));
-		 * System.out.println("Level Order "); BinaryTreeUtil.levelOrder(tree.root);
-		 * BinaryTreeUtil.printZigZagTraversal(tree.root);
-		 */
+		
+		  System.out.println("Height of tree is : " +BinaryTreeUtil.height(tree.root));
+		  System.out.println("Level Order "); BinaryTreeUtil.levelOrder(tree.root);
+		  System.out.println();
+		  BinaryTreeUtil.printZigZagTraversal(tree.root);
+		 System.out.println();
 		
 		BinaryTreeUtil.leftViewofTree(tree.root);
 		BinaryTreeUtil.rightViewofTree(tree.root);
@@ -33,6 +34,13 @@ public class BinaryTreeImpl {
 		System.out.println("Get No Of Nodes " + BinaryTreeUtil.getNoOfNodes(tree.root));
 		System.out.println("Get No Of Leaf Nodes " + BinaryTreeUtil.getNoOfLeafNodes(tree.root));
 		BinaryTreeUtil.printDataGivenLevel(tree.root, 3);
+		System.out.println();
+		BinaryTreeUtil.levelWithRecursion(tree.root);
+		System.out.println();
+		BinaryTreeUtil.reverseLevelOrder(tree.root);
+		System.out.println();
+		BinaryTreeUtil.reverseLevelOrderwWithOutRecursion(tree.root);
+		
 	}
 
 }
