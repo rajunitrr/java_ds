@@ -13,7 +13,9 @@ public class MinimizingTheRange {
 			int range = max(x, y, z) - min(x, y, z);
 			ans = Math.min(ans, range);
 			// System.out.println(ans+" r "+range);
-			if (ans == 0)
+			System.out.println(x+","+y+","+z);
+
+			if (ans == 0||ans==1)
 				break;
 
 			if (x == min(x, y, z)) {
@@ -23,6 +25,7 @@ public class MinimizingTheRange {
 			} else {
 				k++;
 			}
+			
 
 		}
 		return ans;

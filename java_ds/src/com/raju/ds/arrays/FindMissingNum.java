@@ -53,7 +53,7 @@ public class FindMissingNum {
 
 		System.out.println(findMissingNumber(a));
 
-		int b[] = { 10, 10, 20, 30, 30, 40 };
+		int b[] = { 10, 10, 20, 30, 30, 40 ,40};
 
 		System.out.println(findNonRepeatedNumber(b));
 		

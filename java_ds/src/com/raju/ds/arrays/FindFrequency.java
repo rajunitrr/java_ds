@@ -16,7 +16,7 @@ public class FindFrequency {
 		int i=0;
 		int count=1;
 		int maxCount=1;
-		for(i=1;i<a.length;i++) {
+		for(i=0;i<a.length;i++) {
 			
 			while(i<a.length-1 && a[i]==a[i+1]) {
 				i++;

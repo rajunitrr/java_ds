@@ -5,6 +5,7 @@ public class BinaryTree {
 	private int data;
 	BinaryTree left;
 	BinaryTree right;
+	private int height;
 	
 	
 	
@@ -41,5 +42,14 @@ public class BinaryTree {
 	public void setRight(BinaryTree right) {
 		this.right = right;
 	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	
 	
 }
