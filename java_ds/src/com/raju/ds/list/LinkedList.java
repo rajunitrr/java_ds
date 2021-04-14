@@ -1,4 +1,4 @@
-package com.raju.test;
+package com.raju.ds.list;
 
 class Node {
 	int data;
