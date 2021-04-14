@@ -1,5 +1,6 @@
 package com.raju.ds.trees;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
@@ -46,7 +47,7 @@ public class BinaryTreeUtil {
 
 		if (root != null) {
 			inorderRecursion(root.left);
-			System.out.println(root.getData());
+			System.out.print(root.getData()+" ");
 			inorderRecursion(root.right);
 
 		}
@@ -307,6 +308,24 @@ public class BinaryTreeUtil {
 
 		System.out.println(map.values());
 	}
+	
+	static int maxLevel;
+	public static void leftViewOfTreeWithRecursion(BinaryTree root,int level) {
+		
+		if(root==null) {
+			return ;
+		}
+		
+		if(level>=maxLevel) {
+			System.out.print(root.getData()+" ");
+			maxLevel++;
+		}
+		
+		leftViewOfTreeWithRecursion(root.left, level+1);
+		leftViewOfTreeWithRecursion(root.right, level+1);
+		
+	}
+	
 
 	public static void leftViewofTree(BinaryTree root) {
 
@@ -344,6 +363,21 @@ public class BinaryTreeUtil {
 		}
 		System.out.println();
 
+	}
+	static int maxLevelR;
+	public static void rightViewOfTreeWithRecursion(BinaryTree root,int level, int maxLevel) {
+		
+		if(root==null) {
+			return ;
+		}
+		
+		if(level>=maxLevelR) {
+			System.out.print(root.getData()+" ");
+			maxLevelR++;
+		}
+		rightViewOfTreeWithRecursion(root.right, level+1,maxLevel);
+		rightViewOfTreeWithRecursion(root.left, level+1,maxLevel);
+		
 	}
 
 	public static void rightViewofTree(BinaryTree root) {
@@ -446,7 +480,238 @@ public class BinaryTreeUtil {
 		}
 		
 	}
+
+	public static  BinaryTree  mirrorTree(BinaryTree root) {
+
+		if(root==null) {
+			return null;
+		}
+		
+		BinaryTree temp=root.left;
+		root.left=root.right;
+		root.right=temp;
+		
+		mirrorTree(root.left);
+		mirrorTree(root.right);
+		
+		return root;
+	}
 	
+	
+	public static BinaryTree deleteTree(BinaryTree node) {
+
+		if (node == null) {
+			return null;
+		}
+
+		node.left = deleteTree(node.left);
+		node.right = deleteTree(node.right);
+
+		System.out.println("Deleting the node " + node.getData());
+		node = null;
+		return node;
+
+	}
+
+	public static boolean checkForIdentical(BinaryTree node1, BinaryTree node2) {
+
+		if (node1 == null && node2 == null) {
+			return true;
+		}
+
+		if (node1 == null || node2 == null) {
+			return false;
+		}
+
+		return node1.getData() == node2.getData() && checkForIdentical(node1.left, node2.left)
+				&& checkForIdentical(node1.right, node2.right);
+
+	}
+	
+	public static void printBoundary(BinaryTree node) {
+	    if (node != null) {
+	      System.out.print(node.data + " ");
+
+	      printBoundaryLeft(node.left);
+
+	      printLeaves(node.left);
+	      printLeaves(node.right);
+
+	      printBoundaryRight(node.right);
+	    }
+	  }
+
+	private static void printBoundaryLeft(BinaryTree node) {
+
+		if (node == null) {
+			return;
+		}
+
+		if (node.left != null) {
+			System.out.print(node.data + " ");
+			printBoundaryLeft(node.left);
+		} else if (node.right != null) {
+			System.out.print(node.data + " ");
+			printBoundaryLeft(node.right);
+		}
+
+	}
+	
+	private static void printLeaves(BinaryTree node) {
+
+		if(node==null) {
+			return;
+		}
+		
+		
+		if(node.left==null && node.right==null) {
+			System.out.print(node.data+" ");
+		}
+		
+		printLeaves(node.left);
+		printLeaves(node.right);
+	}
+	
+	private static void printBoundaryRight(BinaryTree node) {
+		if (node == null) {
+			return;
+		}
+
+		if (node.right != null) {
+			System.out.print(node.data + " ");
+			printBoundaryRight(node.right);
+		} else if (node.left != null) {
+			System.out.print(node.data + " ");
+			printBoundaryRight(node.left);
+		}
+		
+	}
+
+	public static void printVerticalOrder(BinaryTree root) {
+		
+		if(root==null) {
+			return;
+		}
+		
+		Map<Integer,ArrayList<Integer>> map=new TreeMap<>();
+		Queue<BinaryTree> queue=new LinkedList<>();
+		queue.add(root);
+		
+		while(!queue.isEmpty()) {
+			
+			BinaryTree temp=queue.poll();
+			int h=temp.getHeight();
+			
+			if(map.containsKey(h)) {
+				map.get(h).add(temp.data);
+			}else {
+				ArrayList<Integer> list=new ArrayList<>();
+				list.add(temp.data);
+				map.put(h, list);
+			}
+			
+			if(temp.left!=null) {
+				temp.left.setHeight(h-1);
+				queue.add(temp.left);
+			}
+			
+			if(temp.right!=null) {
+				temp.right.setHeight(h+1);
+				queue.add(temp.right);
+			}
+			
+			
+		}
+		
+		//System.out.println(map.values());
+
+		for (Map.Entry<Integer, ArrayList<Integer>> vlist : map.entrySet()) {
+
+			for (Integer i : vlist.getValue()) {
+				System.out.print(i + " ");
+			}
+
+		}
+		
+		
+		
+	}
+	
+	
+	public static void printVerticalSum(BinaryTree root) {
+		
+		if(root==null) {
+			return;
+		}
+		
+		Map<Integer,Integer> map=new TreeMap<>();
+		Queue<BinaryTree> queue=new LinkedList<>();
+		queue.add(root);
+		
+		while(!queue.isEmpty()) {
+		
+			BinaryTree temp=queue.poll();
+			int h=temp.getHeight();
+			
+			if(map.containsKey(h)) {
+				map.put(h,map.get(h)+temp.data);
+			}else {				
+				map.put(h, temp.data);
+			}
+			
+			if(temp.left!=null) {
+				temp.left.setHeight(h-1);
+				queue.add(temp.left);
+			}
+			
+			if(temp.right!=null) {
+				temp.right.setHeight(h+1);
+				queue.add(temp.right);
+			}
+			
+		}
+		
+		System.out.println(map.values());
+		
+		
+	}
+
+	
+	public static void printSumOfLevel(BinaryTree root) {
+
+		if (root == null) {
+			return;
+		}
+
+		Queue<BinaryTree> queue = new LinkedList<>();
+		queue.add(root);
+
+		while (!queue.isEmpty()) {
+
+			int n = queue.size();
+
+			int sum = 0;
+
+			for (int i = 0; i < n; i++) {
+
+				BinaryTree temp = queue.remove();
+				sum += temp.data;
+				
+				if(temp.left!=null) {
+					queue.add(temp.left);
+				}
+				
+				if(temp.right!=null) {
+					queue.add(temp.right);
+				}
+				
+			}
+			System.out.print(sum+" ");
+
+		}
+
+	}
+
 	
 	
 

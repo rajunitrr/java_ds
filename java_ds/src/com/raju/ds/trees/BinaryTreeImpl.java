@@ -17,30 +17,51 @@ public class BinaryTreeImpl {
 		tree.root.right.right = new BinaryTree(7, null, null);
 
 		
-		  System.out.println("Height of tree is : " +BinaryTreeUtil.height(tree.root));
-		  System.out.println("Level Order "); BinaryTreeUtil.levelOrder(tree.root);
-		  System.out.println();
-		  BinaryTreeUtil.printZigZagTraversal(tree.root);
-		 System.out.println();
+		/*
+		 * System.out.println("Height of tree is : " +BinaryTreeUtil.height(tree.root));
+		 * System.out.println("Level Order "); BinaryTreeUtil.levelOrder(tree.root);
+		 * System.out.println(); BinaryTreeUtil.printZigZagTraversal(tree.root);
+		 * System.out.println();
+		 */
+		/*
+		 * BinaryTreeUtil.leftViewofTree(tree.root);
+		 * System.out.println("leftViewOfTreeWithRecursion ");
+		 * BinaryTreeUtil.leftViewOfTreeWithRecursion(tree.root,0);
+		 * BinaryTreeUtil.rightViewofTree(tree.root);
+		 * System.out.println("rightViewOfTreeWithRecursion");
+		 * BinaryTreeUtil.rightViewOfTreeWithRecursion(tree.root,0,0);
+		 * BinaryTreeUtil.bottomViewOfTree(tree.root);
+		 * BinaryTreeUtil.topViewOfTree(tree.root); System.out.println("Sum is " +
+		 * BinaryTreeUtil.sumOfAllNodes(tree.root));
+		 * System.out.println("DifferenceEvenOddValues is " +
+		 * BinaryTreeUtil.getDifferenceEvenOddValues(tree.root));
+		 * 
+		 * 
+		 * System.out.println("Get No Of Nodes " +
+		 * BinaryTreeUtil.getNoOfNodes(tree.root));
+		 * System.out.println("Get No Of Leaf Nodes " +
+		 * BinaryTreeUtil.getNoOfLeafNodes(tree.root));
+		 * BinaryTreeUtil.printDataGivenLevel(tree.root, 3); System.out.println();
+		 * BinaryTreeUtil.levelWithRecursion(tree.root); System.out.println();
+		 * BinaryTreeUtil.reverseLevelOrder(tree.root); System.out.println();
+		 * BinaryTreeUtil.reverseLevelOrderwWithOutRecursion(tree.root);
+		 */
 		
-		BinaryTreeUtil.leftViewofTree(tree.root);
-		BinaryTreeUtil.rightViewofTree(tree.root);
-		 BinaryTreeUtil.bottomViewOfTree(tree.root);
-		 BinaryTreeUtil.topViewOfTree(tree.root);
-		System.out.println("Sum is " + BinaryTreeUtil.sumOfAllNodes(tree.root));		
-		System.out.println("DifferenceEvenOddValues is " + BinaryTreeUtil.getDifferenceEvenOddValues(tree.root));
+		//BinaryTree node= BinaryTreeUtil.mirrorTree(tree.root);
+		//BinaryTreeUtil.inorderRecursion(node);
+		//BinaryTreeUtil.deleteTree(tree.root);
 		
+		//System.out.println("checkForIdentical "+BinaryTreeUtil.checkForIdentical(tree.root, tree.root));
 		
-		System.out.println("Get No Of Nodes " + BinaryTreeUtil.getNoOfNodes(tree.root));
-		System.out.println("Get No Of Leaf Nodes " + BinaryTreeUtil.getNoOfLeafNodes(tree.root));
-		BinaryTreeUtil.printDataGivenLevel(tree.root, 3);
-		System.out.println();
-		BinaryTreeUtil.levelWithRecursion(tree.root);
-		System.out.println();
-		BinaryTreeUtil.reverseLevelOrder(tree.root);
-		System.out.println();
-		BinaryTreeUtil.reverseLevelOrderwWithOutRecursion(tree.root);
-		
+		//BinaryTreeUtil.printBoundary(tree.root);
+		System.out.println("Vertical order ");
+		BinaryTreeUtil.printVerticalOrder(tree.root);
+		System.out.println("printVerticalSum ");
+		BinaryTreeUtil.printVerticalSum(tree.root);
+		System.out.println("printSumOfLevel ");
+		BinaryTreeUtil.printSumOfLevel(tree.root);
+
+		 
 	}
 
 }

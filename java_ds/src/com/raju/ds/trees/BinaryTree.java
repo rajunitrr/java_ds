@@ -2,7 +2,7 @@ package com.raju.ds.trees;
 
 public class BinaryTree {
 
-	private int data;
+	 int data;
 	BinaryTree left;
 	BinaryTree right;
 	private int height;
