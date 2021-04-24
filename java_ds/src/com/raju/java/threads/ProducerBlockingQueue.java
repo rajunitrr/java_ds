@@ -15,8 +15,12 @@ public class ProducerBlockingQueue implements Runnable {
 		int count = 1;
 		while (true) {
 			try {
-				System.out.println("Producing  elements to the queue " + count);
-				blockingQueue.add(count++);
+				if(blockingQueue.size()<=10) {
+					System.out.println("Producing  elements to the queue " + count);
+					blockingQueue.add(count++);
+				}else {
+					break;
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

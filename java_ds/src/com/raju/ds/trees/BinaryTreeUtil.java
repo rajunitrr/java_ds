@@ -538,15 +538,13 @@ public class BinaryTreeUtil {
 	      printLeaves(node.right);
 
 	      printBoundaryRight(node.right);
-	    }
-	  }
+	    }	  }
 
 	private static void printBoundaryLeft(BinaryTree node) {
 
 		if (node == null) {
 			return;
 		}
-
 		if (node.left != null) {
 			System.out.print(node.data + " ");
 			printBoundaryLeft(node.left);
@@ -560,9 +558,7 @@ public class BinaryTreeUtil {
 	private static void printLeaves(BinaryTree node) {
 
 		if(node==null) {
-			return;
-		}
-		
+			return;		}		
 		
 		if(node.left==null && node.right==null) {
 			System.out.print(node.data+" ");

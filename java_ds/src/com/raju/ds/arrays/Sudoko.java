@@ -3,7 +3,6 @@ package com.raju.ds.arrays;
 public class Sudoko {
 
 	static boolean check(int a[][], int r, int c, int i) {
-
 		// row and column check
 		for (int j = 0; j < 4; j++) {
 
@@ -11,7 +10,6 @@ public class Sudoko {
 				return false;
 			}
 		}
-
 		// to find block left upper corner
 		int x = (r / 2) * 2;
 		int y = (c / 2) * 2;
@@ -24,7 +22,6 @@ public class Sudoko {
 					return false;
 				}
 			}
-
 		}
 
 		return true;
@@ -34,8 +31,7 @@ public class Sudoko {
 
 		if (c == 4) {
 			c = 0;
-			r++;
-		}
+			r++;		}
 
 		if (r == 4) {
 			return true;
@@ -46,16 +42,12 @@ public class Sudoko {
 		}
 
 		for (int i = 1; i <= 4; i++) {
-
 			// check for i valid position
 			if (check(sudo, r, c, i)) {
 				sudo[r][c] = i;
-
 				// move forward and check
 				if (sudoko(sudo, r, c + 1)) {
-					return true;
-				}
-
+					return true;				}
 				sudo[r][c] = 0; // back tracking
 			}
 

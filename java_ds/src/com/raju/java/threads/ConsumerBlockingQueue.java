@@ -16,7 +16,11 @@ public class ConsumerBlockingQueue implements Runnable {
 		while(true) {
 			
 			try {
+				if(blockingQueue.size()>=1)
 				System.out.println("consuming from queue "+blockingQueue.take());
+				else{
+					break;
+				}
 				
 			}catch(Exception e) {
 				e.printStackTrace();

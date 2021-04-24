@@ -15,18 +15,34 @@ public class GroupAnagram {
 
 		HashMap<String, List<String>> map = new HashMap<>();
 		for (String s : strs) {
-
-			char c[] = s.toCharArray();
-			Arrays.sort(c);
-			String key = String.valueOf(c);
+			String key = sort(s);
+			System.out.println(key);
 			if (!map.containsKey(key)) {
-				map.put(key, new ArrayList());
+				map.put(key, new ArrayList<String>());
 			}
 			map.get(key).add(s);
 		}
 
 		return new ArrayList<>(map.values());
 
+	}
+	
+	private static String sort(String s) {
+		
+		int a[]=new int[26];
+		for(int i=0;i<s.length();i++) {
+			a[s.charAt(i)-'a']++;
+		}
+		
+		StringBuilder sb=new StringBuilder();
+		for(int i=0;i<26;i++) {
+			if(a[i]!=0) {
+				char c=(char)(97+i);
+				sb.append(c);
+			}
+		}
+		
+		return sb.toString();
 	}
 
 	public static void main(String[] args) {

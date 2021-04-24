@@ -19,10 +19,11 @@ public class Producer extends Thread {
 	@Override
 	public void run() {
 
-		for(int i=1;i<=size;i++) {
+		int count=1;
+		while(true) {
 
 			synchronized (queue) {
-				if (queue.size() == size) {
+				while (queue.size() == size) {
 					try {
 						System.out.println("Queue is full, " + "Producer thread waiting for "
 								+ "consumer to take something from queue");
@@ -34,8 +35,8 @@ public class Producer extends Thread {
 					}
 
 				}
-				System.out.println("Producer is produced " + i);
-				queue.add(i);
+				System.out.println("Producer is produced " + count);
+				queue.add(count++);
 				queue.notifyAll();
 
 			}

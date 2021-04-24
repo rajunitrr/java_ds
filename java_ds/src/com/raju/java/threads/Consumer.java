@@ -22,7 +22,7 @@ public class Consumer extends Thread {
 
 			synchronized (queue) {
 				
-				if (queue.isEmpty()) {
+				while (queue.isEmpty()) {
 					
 					try {
 						System.out.println("Queue is empty !Consumer is waiting ");

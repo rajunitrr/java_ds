@@ -145,4 +145,178 @@ public class BinaryTreeUtil {
 
 	}
 	
+	public static void printAncesstor(Node node,int a[],int index,int value) {
+		
+		if(node==null) {
+			return ;
+		}
+		a[index]=node.data;
+		if(node.data==value) {
+			
+			for(int i=index-1 ;i>=0;i--) {
+				System.out.print(a[i]+" ");
+			}
+			return ;
+		}
+		
+		printAncesstor(node.left, a, index+1, value);
+		printAncesstor(node.right, a, index+1, value);
+		
+	}
+	
+
+	public static boolean printAncesstor(Node node,int value) {
+		
+		if(node==null) {
+			return false;
+		}
+		
+		if(node.data==value) {
+			return true;
+		}
+		
+		if(printAncesstor(node.left, value)||printAncesstor(node.right, value)) {
+			
+			System.out.print(node.data+" ");
+			return false;
+		}
+		
+		return false;
+	}
+	
+	public static Node  printSibling(Node node,int value) {
+		
+		if(node==null) {
+			return null;
+		}
+		
+		if(node.left!=null && node.left.data==value) {		   
+			
+			return node.right ;
+		}
+		
+		if(node.right!=null &&node.right.data==value) {
+			
+			return node.left ;
+		}
+	
+		Node temp=printSibling(node.left,value);
+		temp=printSibling(node.right,value);
+		
+		return temp;
+	}
+	
+	
+	public static Node getSibling(Node node, int k) {
+
+		if (node == null) {
+			return null;
+		}
+
+		if (node.left != null && node.left.data == k) {
+			return node.right;
+		}
+
+		if (node.right != null && node.right.data == k) {
+			return node.left;
+		}
+
+		Node l = getSibling(node.left, k);
+		if (l != null) {
+			return l;
+		}
+		l = getSibling(node, k);
+		return l;
+
+	}
+	
+	public static boolean checkSiblings(Node node, int a, int b) {
+
+		if (node == null) {
+			return false;
+		}
+
+		if ((node.left != null && node.right != null)
+				&& ((node.left.data == a && node.right.data == b) || (node.left.data == b && node.right.data == a))) {
+			return true;
+		}
+
+		return checkSiblings(node.left, a, b) || checkSiblings(node.right, a, b);
+
+	}
+	
+	public static Node LCA(Node node, int a, int b) {
+
+		if (node == null) {
+			return null;
+		}
+
+		if (node.data == a || node.data == b) {
+			return node;
+		}
+
+		Node left = LCA(node.left, a, b);
+		Node right = LCA(node.right, a, b);
+
+		if (left != null && right != null) {
+			return node;
+		}
+
+		return left != null ? left : right;
+
+	}
+	
+	public static int findtheDistance(Node node,int a,int b) {
+		
+		if(node==null) {
+			return -1;
+		}
+		
+		Node lca=LCA(node, a, b);
+		
+		int d1=findDistanceFromParent(lca,a,0);
+		int d2=findDistanceFromParent(lca,b,0);
+		
+		return d1+d2;
+	}
+	
+	public static int findDistanceFromParent(Node node,int a,int level) {
+		
+		if(node==null) {
+			return -1;
+		}
+		
+		if(node.data==a) {
+			return level;
+		}
+		
+		int d=findDistanceFromParent(node.left, a, level+1);
+		if(d!=-1) {
+			return d;
+		}
+		 d=findDistanceFromParent(node.right, a, level+1);
+		 return d;
+	}
+	
+	static Node prev = null;
+
+	public static boolean isBST(Node root) {
+
+		if (root == null) {
+			return true;
+		}
+
+		if (!isBST(root.left)) {
+			return false;
+		}
+
+		if (prev != null && prev.data > root.data) {
+			return false;
+		}
+
+		prev = root;
+
+		return isBST(root.right);
+	}
+	
 }
